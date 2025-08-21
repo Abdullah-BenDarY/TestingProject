@@ -42,9 +42,9 @@ android {
         viewBinding = true
     }
 }
-hilt {
-    enableAggregatingTask = false
-}
+//hilt {
+//    enableAggregatingTask = false
+//}
 
 dependencies {
 

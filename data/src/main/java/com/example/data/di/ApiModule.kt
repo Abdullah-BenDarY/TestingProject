@@ -7,7 +7,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import jakarta.inject.Singleton
+import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -17,23 +17,23 @@ import retrofit2.converter.gson.GsonConverterFactory
 @InstallIn(SingletonComponent::class)
 object ApiModule {
 
-//    @Provides
-//    @Singleton
-//    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
-//        val loggingInterceptor = HttpLoggingInterceptor { message ->
-//            Log.d("OkHttp", message)
-//        }
-//        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-//        return loggingInterceptor
-//    }
+    @Provides
+    @Singleton
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
+        val loggingInterceptor = HttpLoggingInterceptor { message ->
+            Log.d("OkHttp", message)
+        }
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+        return loggingInterceptor
+    }
 
     @Provides
     @Singleton
     fun provideOkHttpClient(
-//        loggingInterceptor: HttpLoggingInterceptor
+        loggingInterceptor: HttpLoggingInterceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
-//            .addInterceptor(loggingInterceptor)
+            .addInterceptor(loggingInterceptor)
             .build()
     }
 
@@ -54,7 +54,7 @@ object ApiModule {
     ): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("www.themealdb.com/api/json/v1/1/")
+            .baseUrl("https://www.themealdb.com/api/json/v1/1/")
             .addConverterFactory(gsonConverterFactory)
             .build()
     }
