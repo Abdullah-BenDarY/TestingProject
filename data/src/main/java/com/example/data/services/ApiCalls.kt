@@ -5,7 +5,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiCalls {
-
     @GET("search.php?")
-    fun getMealByName(@Query("f") name: String): ModelAllMealsDTO
+    fun getMealByName(
+        @Query("f") name: Char
+    ): ModelAllMealsDTO
+
 }

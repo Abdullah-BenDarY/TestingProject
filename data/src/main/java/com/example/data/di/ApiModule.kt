@@ -17,24 +17,23 @@ import retrofit2.converter.gson.GsonConverterFactory
 @InstallIn(SingletonComponent::class)
 object ApiModule {
 
-    @Provides
-    @Singleton
-    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
-        val loggingInterceptor = HttpLoggingInterceptor { message ->
-            Log.d("OkHttp", message)
-        }
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-        return loggingInterceptor
-    }
-
+//    @Provides
+//    @Singleton
+//    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
+//        val loggingInterceptor = HttpLoggingInterceptor { message ->
+//            Log.d("OkHttp", message)
+//        }
+//        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+//        return loggingInterceptor
+//    }
 
     @Provides
     @Singleton
     fun provideOkHttpClient(
-        loggingInterceptor: HttpLoggingInterceptor
+//        loggingInterceptor: HttpLoggingInterceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
+//            .addInterceptor(loggingInterceptor)
             .build()
     }
 

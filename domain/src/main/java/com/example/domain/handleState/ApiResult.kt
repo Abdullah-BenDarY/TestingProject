@@ -1,4 +1,4 @@
-package com.example.domain
+package com.example.domain.handleState
 
 sealed interface ApiResult<out T> {
     data class Success<T>(val data: T, val message: String? = null) : ApiResult<T>

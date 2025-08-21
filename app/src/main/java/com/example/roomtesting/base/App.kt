@@ -1,4 +1,4 @@
-package com.example.roomtesting
+package com.example.roomtesting.base
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
